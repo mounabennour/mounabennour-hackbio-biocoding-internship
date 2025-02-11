@@ -1,3 +1,11 @@
+name= " Mouna Bennour"
+slack_username= "Mouna"
+email="mounabennour2@gmailcom "
+hobby=" I'm really into weightlifting and Pilates"
+country="Tunisia"
+discipline=" Biological engineering student"
+preferred_programming_language= "PYTHON"
+
 #Module1_Python_Syntax
 print("Hello, World!")
 print("Hello, HackBio!")
