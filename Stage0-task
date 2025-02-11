@@ -1,0 +1,154 @@
+#Module1_Python_Syntax
+print("Hello, World!")
+print("Hello, HackBio!")
+print("Cheers to learning bioinformatics!")
+x = 2
+print(x)
+y = "John"
+print(y)
+print(type(2))
+print(type("John"))
+print("John")
+print('John')
+a = 2 
+a = 3 
+A = 5 
+print(a)
+print(A)
+mygene = "CAP3"
+my_gene = "CAP3"
+_my_gene = "CAP3"
+myGene = "CAP3"
+MYGENE = "CAP3"
+mygene2 = "CAP3"
+2mygene = "CAP3"
+my-gene = "CAP3" 
+my gene = "CAP3"
+x, y, z = "Orange", "Banana", "Cherry"
+x = y = z = "Orange"
+print(x)
+print(y)
+print(z)
+enzyme, number = "hexokinase", 16 
+species = "H.sapiens" 
+gene_length = 3800 
+print(enzyme, number, species, gene_length)
+#Module2_ Python_Data_Types
+sequence = "ATGACAGGGTATATCCATGC"  
+gene = 'TP53'
+len(sequence)
+dna_fragment = "ATCGGT"
+cloned_fragment = sequence + dna_fragment
+print(cloned_fragment)
+sliced_fragment = cloned_fragment[1:4]
+cloned_fragment[:5]
+seq1 = 'atgcc'
+seq2 = ' GGCCC' 
+seq3 = seq1+seq2
+seq3.upper()
+seq3.lower()
+seq3.strip()
+sequence = "ATGACAGGGTATATCCATGC" 
+seq_len = len(sequence)
+txt = f"The Sequence has {seq_len} nucleotides"
+print(txt)
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+expression_1= 554
+expression_2= 789
+total_expression= expression_1 + expression_2
+sample_size= 15
+average_expression= total_expression/sample_size
+expression_product= expression_1*expression_2
+difference= expression_1 - expression_2
+foldchange= (expression_2 - expression_1)/ expression_2
+
+#Module3_Data_Structures
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+print(species)
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+print(species[0]) 
+print(species[1]) 
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+species[2] = "Pongo pygmaeus"
+print(species) 
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+species.append("Macaca mulatta")
+print(species)
+species.extend(["Felis catus", "Canis lupus"])
+print(species)
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+species.remove("Felis catus")
+print(species)
+species.pop()
+print(species)
+del species[1]
+print(species)
+dna_sequences = ["ATGCGTAC", "GCTTAGCT", "CGTACGTA"]
+print(dna_sequences[0])
+new_sequence = "TGCATGCA"
+dna_sequences.append(new_sequence)
+print(dna_sequences)
+sequence = ["ATGCGTAC", "GCTTAGCT", "CGTACGTA"]
+g = sequence[0].count('G')
+c = sequence[0].count('C')
+gc_content_percentage = ((g + c) / len(sequence[0])) * 100
+print(gc_content_percentage)
+species_population = [
+    ["Homo sapiens", 7800000000],
+    ["Pan troglodytes", 200000],
+    ["Gorilla gorilla", 100000],
+    ["Pongo pygmaeus", 104700]
+]
+print(species_population[0][1])
+print(species_population[1][0]) 
+species_characteristics = ("Homo sapiens", "Mammal", "Omnivore")
+print(species_characteristics)
+species_characteristics = ("Homo sapiens", "Mammal", "Omnivore")
+print(species_characteristics[0])
+print(species_characteristics[1])
+gene_coordinates = (340522, 341532)  # start, end
+print(coordinates)
+species_lifespan = ("Homo sapiens", 79) 
+print(species_lifespan)
+species, lifespan = species_lifespan
+print(f"Species: {species}, Lifespan: {lifespan} years")
+species_dict = {
+    "Human": "Homo sapiens",
+    "Chimpanzee": "Pan troglodytes",
+    "Gorilla": "Gorilla gorilla",
+    "Orangutan": "Pongo pygmaeus"
+}
+print(species_dict["Human"])  
+species_dict["Rhesus Monkey"] = "Macaca mulatta"
+print(species_dict)
+species_dict["Human"] = "Homo sapiens sapiens"
+print(species_dict)
+del species_dict["Gorilla"]
+print(species_dict)
+removed_species = species_dict.pop("Orangutan")
+print(removed_species)
+print(species_dict)
+ species_dict.pop("Chimpanzee")
+gene_expression = {
+    "BRCA1": 12.5,
+    "TP53": 7.8,
+    "MYC": 19.2
+}
+species_classification = {
+    "Homo sapiens": {
+        "Kingdom": "Animalia",
+        "Phylum": "Chordata",
+        "Class": "Mammalia",
+        "Order": "Primates",
+        "Family": "Hominidae"
+    },
+    "Pan troglodytes": {
+        "Kingdom": "Animalia",
+        "Phylum": "Chordata",
+        "Class": "Mammalia",
+        "Order": "Primates",
+        "Family": "Hominidae"
+    }
+}
