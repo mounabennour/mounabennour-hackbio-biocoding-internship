@@ -1,6 +1,161 @@
+def translate_dna_to_protein(dna):
+    codon_table = {
+        'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
+        'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
+        'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
+        'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',
+        'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
+        'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
+        'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
+        'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
+        'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
+        'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
+        'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
+        'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
+        'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
+        'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
+        'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
+        'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
+    }
+    protein = ''
+    for i in range(0, len(dna) - 2, 3):
+        codon = dna[i:i+3]
+        protein += codon_table.get(codon, 'X') 
+    return protein
+import numpy as np
+import pandas as pd
+
+def simulate_logistic_growth(K=1.0, r=1.0, t_max=10, steps=100, lag_range=(0.5, 2), log_range=(2, 5)):
+    time = np.linspace(0, t_max, steps)
+    lag_length = np.random.uniform(*lag_range)
+    log_length = np.random.uniform(*log_range)
+    lag_end = lag_length
+    log_end = lag_end + log_length
+
+    population = []
+    for t in time:
+        if t <= lag_end:
+            pop = 0.01  # constant during lag
+        elif lag_end < t <= log_end:
+            t_adjusted = t - lag_end
+            pop = K / (1 + ((K - 0.01)/0.01) * np.exp(-r * t_adjusted))
+        else:
+            pop = K
+        population.append(pop)
+    
+    return pd.DataFrame({'Time': time, 'Population': population})
+def generate_multiple_growth_curves(n=100):
+    df_list = []
+    for i in range(n):
+        df = simulate_logistic_growth()
+        df['Replicate'] = i + 1
+        df_list.append(df)
+    return pd.concat(df_list, ignore_index=True)
+def time_to_80_percent_max(df):
+    max_pop = df['Population'].max()
+    threshold = 0.8 * max_pop
+    time_80 = df[df['Population'] >= threshold]['Time'].min()
+    return time_80
+def hamming_distance(str1, str2):
+    max_len = max(len(str1), len(str2))
+    str1 = str1.ljust(max_len)
+    str2 = str2.ljust(max_len)
+    return sum(c1 != c2 for c1, c2 in zip(str1, str2))
 #Module_4
 a = 33
 b = 200
 if b > a:
   print("b is greater than a")
-  
+ a = 33
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+species = ["Homo sapiens", "Pan troglodytes", "Gorilla gorilla"]
+for sp in species:
+    print(sp)
+dna_sequences = ["ATGCGTAC", "GCTTAGCT", "CGTACGTA"]
+for seq in dna_sequences:
+    g_count = seq.count('G')
+    c_count = seq.count('C')
+    gc_content = ((g_count + c_count) / len(seq)) * 100
+    print(f"GC content of {seq}: {gc_content:.2f}%")
+gene_expression = {
+    "BRCA1": 12.5,
+    "TP53": 7.8,
+    "MYC": 19.2
+}
+for gene, expression in gene_expression.items():
+    print(f"Gene: {gene}, Expression Level: {expression}")
+sequences = ["ATG", "TGC", "CGA"]
+
+for seq1 in sequences:
+    for seq2 in sequences:
+        if seq1 != seq2:
+            print(f"Comparing {seq1} with {seq2}")
+initial_population = 100
+growth_rate = 1.05  # 5% growth per generation
+
+for generation in range(1, 11):
+    population = initial_population * (growth_rate ** generation)
+    print(f"Generation {generation}: {population:.2f}")
+def gc_content(sequence):
+    g_count = sequence.count('G')
+    c_count = sequence.count('C')
+    gc_content_percentage = ((g_count + c_count) / len(sequence)) * 100
+    return gc_content_percentage
+
+sequence = "ATGCGTAC"
+gc = gc_content(sequence)
+print(f"GC content of {sequence}: {gc:.2f}%")
+def gc_content(sequence, uppercase=True):
+    if not uppercase:
+        sequence = sequence.upper()
+    g_count = sequence.count('G')
+    c_count = sequence.count('C')
+    gc_content_percentage = ((g_count + c_count) / len(sequence)) * 100
+    return gc_content_percentage
+print(gc_content("atgcgtac", uppercase=False))
+print(gc_content("ATGCGTAC"))
+def gc_at_content(sequence):
+    g_count = sequence.count('G')
+    c_count = sequence.count('C')
+    a_count = sequence.count('A')
+    t_count = sequence.count('T')
+    gc_content_percentage = ((g_count + c_count) / len(sequence)) * 100
+    at_content_percentage = ((a_count + t_count) / len(sequence)) * 100
+    return gc_content_percentage, at_content_percentage
+ gc= gc_at_content("ATGCGTAC")
+at= gc= gc_at_content("ATGCGTAC")
+print(f"GC content: {gc:.2f}%")
+print(f"AT content: {at:.2f}%")
+def simulate_population_growth(initial_population, growth_rate, generations):
+    population = initial_population
+    for generation in range(generations):
+        population = population * growth_rate
+        print(f"Generation {generation + 1}: Population = {population:.2f}")
+    return population
+    simulate_population_growth(100, 1.05, 10)
+def simulate_population_growth(initial_population, growth_rate, generations):
+    population = initial_population
+    max_population = 108
+    population_history = []
+
+    for generation in range(generations):
+        if population < max_population:
+            population = population * growth_rate
+            if population > max_population:
+                population = max_population
+        population_history.append(population)
+        print(f"Generation {generation + 1}: Population = {population:.2f}")
+
+    return population_history
