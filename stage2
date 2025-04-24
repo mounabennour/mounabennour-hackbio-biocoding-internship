@@ -1,0 +1,204 @@
+
+import pandas as pd
+data = {"calories": [420, 380, 390], "duration": [50, 40, 45]}
+
+df = pd.DataFrame(data)
+
+print(df) 
+import pandas as pd
+data = {"calories": [420, 380, 390], "duration": [50, 40, 45]}
+
+df = pd.DataFrame(data)
+
+print(df) 
+
+df['calories']
+import pandas as pd
+data = {"calories": [420, 380, 390], "duration": [50, 40, 45]}
+
+df = pd.DataFrame(data)
+
+print(df) 
+print(df.loc[0])
+data = {"calories": [420, 380, 390], "duration": [50, 40, 45]}
+
+df = pd.DataFrame(data)
+
+print(df) 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('your_data.csv')
+
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.hist(df[df['Duration'] == 60]['Maxpulse'], bins=10, color='skyblue', edgecolor='black')
+
+plt.subplot(1, 2, 2)
+plt.hist(df[df['Duration'] != 60]['Pulse'], bins=10, color='salmon', edgecolor='black')
+
+plt.tight_layout()
+plt.show()
+
+#load data into a DataFrame object:
+df = pd.DataFrame(data, index = ["day1", "day2", "day3"])
+
+print(df)
+import pandas as pd
+data_source = "https://www.w3schools.com/python/pandas/data.csv.txt" 
+df = pd.read_csv(data_source, sep = ',') 
+print(df.head(5))
+print(df.tail(5))
+print(df.info()) 
+df_clean = df.dropna()
+df_filled = df.fillna(0)
+df_no_duplicates = df.drop_duplicates()
+print(df.describe())
+print(df["Calories"].mean()) 
+df.loc[df['Duration'] == 60]
+grouped = df.groupby("Duration")["Calories"].mean()
+print(grouped)
+
+df.plot(x="Duration", y="Calories", kind="line")
+df["Calories"].plot(kind="hist")
+
+pip install seaborn
+import seaborn as sns
+df = sns.load_dataset("penguins")
+sns.scatterplot(df, x="bill_length_mm", y="bill_depth_mm")
+df = sns.load_dataset("penguins")
+sns.scatterplot(df, 
+                x="bill_length_mm", 
+                y="bill_depth_mm", 
+                hue="species")
+ df = sns.load_dataset("penguins")
+sns.scatterplot(df, 
+                x="bill_length_mm", 
+                y="bill_depth_mm", 
+                hue="species", 
+                style="sex")
+sns.displot(df, x="flipper_length_mm", kind="hist")
+sns.displot(df, x="flipper_length_mm", kind="kde")
+sns.displot(df, x="flipper_length_mm", kind="kde", hue="species")
+sns.displot(df, x="flipper_length_mm", kind="kde", 
+            hue="species", multiple="stack")
+sns.displot(df, x="flipper_length_mm", kind="hist", 
+            hue="species", multiple="stack")
+sns.catplot(df, x="species", y="bill_length_mm")
+sns.catplot(df, x="species", y="bill_length_mm", kind="swarm")
+sns.catplot(df, x="species", y="bill_length_mm", kind="swarm", hue="sex")
+sns.violinplot(df, y='bill_length_mm', x="species", hue="sex")
+sns.violinplot(df, y='bill_length_mm', x="species", hue="sex", split=True)
+sns.jointplot(df, x="bill_length_mm", y="bill_depth_mm", hue="species", height=4)
+sns.pairplot(data=df, hue="species")
+
+from scipy import stats
+
+control = [0.9, 1.1, 1.2, 1.0, 0.95]
+treated = [1.3, 1.5, 1.45, 1.4, 1.35]
+t_stat, p_value = stats.ttest_ind(control, treated)
+
+print(f"T-statistic: {t_stat}")
+print(f"P-value: {p_value}")
+if p_value < 0.05:
+    print("The difference in bacterial growth is statistically significant.")
+else:
+    print("The difference in bacterial growth is not statistically significant.")
+
+f_stat, p_value = stats.f_oneway(nutrient_A, nutrient_B, nutrient_C)
+print(f"F-statistic: {f_stat}")
+print(f"P-value: {p_value}")
+if p_value < 0.05:
+    print("There is a significant difference between at least two nutrient groups.")
+else:
+    print("No significant difference between the nutrient groups.")
+
+temperature = [20, 22, 24, 26, 28, 30]
+metabolic_rate = [1.1, 1.3, 1.5, 1.7, 1.8, 2.0]
+
+corr_coefficient, p_value = stats.pearsonr(temperature, metabolic_rate)
+
+print(f"Correlation coefficient: {corr_coefficient}")
+print(f"P-value: {p_value}")
+
+if p_value < 0.05:
+    print("There is a significant correlation between temperature and metabolic rate.")
+else:
+    print("No significant correlation between temperature and metabolic rate.")
+ 
+expected = [45, 35, 20]
+
+chi_square, p_value = stats.chisquare(f_obs=observed, f_exp=expected)
+
+print(f"Chi-square statistic: {chi_square}")
+print(f"P-value: {p_value}")
+
+if p_value < 0.05:
+    print("The observed data significantly differs from expected Mendelian ratios.")
+else:
+    print("The observed data does not significantly differ from expected Mendelian ratios.")
+    
+from scipy.stats import linregress
+nutrient_concentration = [0.1, 0.2, 0.3, 0.4, 0.5]
+bacterial_growth = [0.5, 0.7, 0.8, 0.9, 1.0]
+
+slope, intercept, r_value, p_value, std_err = linregress(nutrient_concentration, bacterial_growth)
+
+print(f"Slope: {slope}")
+print(f"Intercept: {intercept}")
+print(f"R-squared: {r_value**2}")
+print(f"P-value: {p_value}")
+
+if p_value < 0.05:
+    print("There is a significant linear relationship between nutrient concentration and bacterial growth.")
+else:
+    print("No significant linear relationship between nutrient concentration and bacterial growth.")
+
+    
+from Bio.Seq import Seq
+dna_sequence = Seq("ATGCGTACCTGAC")
+
+rna_sequence = dna_sequence.transcribe()
+print(f"RNA Sequence: {rna_sequence}")
+
+protein_sequence = rna_sequence.translate()
+print(f"Protein Sequence: {protein_sequence}")
+
+from Bio.SeqUtils import gc_fraction
+gc_content = gc_fraction(dna_sequence) * 100
+print(f"GC Content: {gc_content:.2f}%")
+from Bio import SeqIO
+for record in SeqIO.parse("example.fasta", "fasta"):
+    print(f"ID: {record.id}")
+    print(f"Sequence: {record.seq}")
+    print(f"Length: {len(record)}")
+
+from Bio.Blast import NCBIWWW
+
+result_handle = NCBIWWW.qblast("blastn", "nt", "ATGCGTACCTGAC")
+
+with open("my_blast.xml", "w") as out_handle:
+    out_handle.write(result_handle.read())
+result_handle.close()
+
+print("BLAST search completed and saved to my_blast.xml")
+from Bio import pairwise2
+from Bio.pairwise2 import format_alignment
+
+seq1 = "ACGTACGT"
+seq2 = "ACGTCGT"
+
+alignments = pairwise2.align.globalxx(seq1, seq2)
+
+for alignment in alignments:
+    print(format_alignment(*alignment))
+    break
+from Bio import Entrez
+Entrez.email = "mounabennour2@gmail.com"
+
+handle = Entrez.efetch(db="nucleotide", id="NM_001200", rettype="fasta", retmode="text")
+sequence_data = handle.read()
+print(sequence_data)
+
